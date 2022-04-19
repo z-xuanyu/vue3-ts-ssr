@@ -10,30 +10,32 @@
 import { createApp } from './main';
 import { renderToString } from 'vue/server-renderer';
 import type { ParameterizedContext } from 'koa';
-import { createRouter } from './router'
+import { createRouter } from './router';
 import { setupStore, store } from './store';
 
-export const render = async (ctx: ParameterizedContext, manifest: Record<string, string[]>): Promise<[string, string, string]> => {
-    const { app } = createApp();
+export const render = async (
+  ctx: ParameterizedContext,
+  manifest: Record<string, string[]>,
+): Promise<[string, string, string]> => {
+  const { app } = createApp();
 
-     // 路由注册
-     const router = createRouter('server');
-     app.use(router);
-     await router.push(ctx.path);
-     await router.isReady();
+  // 路由注册
+  const router = createRouter('server');
+  app.use(router);
+  await router.push(ctx.path);
+  await router.isReady();
 
-    //  pinia
-    setupStore(app);
-    const state = JSON.stringify(store.state.value);
+  //  pinia
+  setupStore(app);
+  const state = JSON.stringify(store.state.value);
 
-    const renderCtx: {modules?: string[]} = {}
-    let renderedHtml = await renderToString(app, renderCtx);
+  const renderCtx: { modules?: string[] } = {};
+  const renderedHtml = await renderToString(app, renderCtx);
 
-    const preloadLinks = renderPreloadLinks(renderCtx.modules, manifest);
+  const preloadLinks = renderPreloadLinks(renderCtx.modules, manifest);
 
-    return [renderedHtml, state, preloadLinks];
-}
-
+  return [renderedHtml, state, preloadLinks];
+};
 
 /**
  * 解析需要预加载的链接
@@ -41,27 +43,26 @@ export const render = async (ctx: ParameterizedContext, manifest: Record<string,
  * @param manifest
  * @returns string
  */
- function renderPreloadLinks(
+function renderPreloadLinks(
   modules: undefined | string[],
-  manifest: Record<string, string[]>
+  manifest: Record<string, string[]>,
 ): string {
   let links = '';
   const seen = new Set();
   if (modules === undefined) throw new Error();
   modules.forEach((id) => {
-      const files = manifest[id];
-      if (files) {
-          files.forEach((file) => {
-              if (!seen.has(file)) {
-                  seen.add(file);
-                  links += renderPreloadLink(file);
-              }
-          });
-      }
+    const files = manifest[id];
+    if (files) {
+      files.forEach((file) => {
+        if (!seen.has(file)) {
+          seen.add(file);
+          links += renderPreloadLink(file);
+        }
+      });
+    }
   });
   return links;
 }
-
 
 /**
  * 预加载的对应的地址
@@ -69,12 +70,12 @@ export const render = async (ctx: ParameterizedContext, manifest: Record<string,
  * @param file
  * @returns string
  */
- function renderPreloadLink(file: string): string {
+function renderPreloadLink(file: string): string {
   if (file.endsWith('.js')) {
-      return `<link rel="modulepreload" crossorigin href="${file}">`;
+    return `<link rel="modulepreload" crossorigin href="${file}">`;
   } else if (file.endsWith('.css')) {
-      return `<link rel="stylesheet" href="${file}">`;
+    return `<link rel="stylesheet" href="${file}">`;
   } else {
-      return '';
+    return '';
   }
 }

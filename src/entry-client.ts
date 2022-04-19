@@ -8,14 +8,14 @@
  * @Description: Modify here please
  */
 
-import { createApp } from "./main"
-import { createRouter } from "./router";
-import { setupStore, store } from "./store";
+import { createApp } from './main';
+import { createRouter } from './router';
+import { setupStore, store } from './store';
 
 const router = createRouter('client');
 const { app } = createApp();
 app.use(router);
-setupStore(app)
+setupStore(app);
 
 // 初始化 pini
 // 注意：__INITIAL_STATE__需要在 src/types/shims-global.d.ts中定义

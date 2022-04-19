@@ -17,4 +17,3 @@ export function setupStore(app: App<Element>) {
 }
 
 export { store };
-

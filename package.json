@@ -1,5 +1,18 @@
 {
   "name": "vue3-ts-ssr",
+  "keywords": [
+    "vue3",
+    "TypeScript",
+    "SSR",
+    "Pinia",
+    "Vite"
+  ],
+  "description": "A Vue3+TypeScript+Vite+Pinia SSR Template",
+  "author": {
+    "name": "xuanyu",
+    "email": "969718197@qq.com",
+    "url": "https://github.com/z-xuanyu/vue3-ts-ssr"
+  },
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -7,9 +20,13 @@
     "server": "node server-prod.js",
     "build": "yarn build:client && yarn build:server",
     "build:client": "vite build --ssrManifest --outDir dist/client",
-    "build:server": "vite build --ssr src/entry-server --outDir dist/server"
+    "build:server": "vite build --ssr src/entry-server --outDir dist/server",
+    "eslint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
+    "prettier": "prettier .  --write",
+    "commit": "git-cz"
   },
   "dependencies": {
+    "@vueuse/core": "^8.2.6",
     "koa": "^2.13.4",
     "koa-connect": "^2.1.0",
     "koa-send": "^5.0.1",
@@ -18,10 +35,38 @@
     "vue-router": "^4.0.14"
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
     "@types/koa": "^2.13.4",
+    "@types/node": "^17.0.25",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
     "@vitejs/plugin-vue": "^2.3.1",
+    "commitizen": "^4.2.4",
+    "commitlint-config-cz": "^0.13.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^6.3.0",
+    "eslint": "^8.13.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.6.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.8",
+    "prettier": "^2.6.2",
+    "sass": "^1.50.1",
     "typescript": "^4.5.4",
     "vite": "^2.9.2",
     "vue-tsc": "^0.29.8"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "yarn eslint",
+      "yarn prettier"
+    ]
   }
 }

@@ -10,21 +10,21 @@
 import { defineStore } from 'pinia';
 import { store } from '..';
 
-export const useUserStore  = defineStore('user', {
-    state: () => {
-        return {
-            name: 'xuanyu',
-            age: 20
-        };
+export const useUserStore = defineStore('user', {
+  state: () => {
+    return {
+      name: 'xuanyu',
+      age: 20,
+    };
+  },
+  actions: {
+    updateName(name: string) {
+      this.name = name;
     },
-    actions: {
-        updateName(name: string) {
-            this.name = name;
-        },
-        updateAge(age: number) {
-            this.age = age;
-        }
-    }
+    updateAge(age: number) {
+      this.age = age;
+    },
+  },
 });
 
 export function useUserStoreWithOut() {

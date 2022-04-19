@@ -4,15 +4,22 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-04-19 11:03:12
- * @LastEditTime: 2022-04-19 12:12:39
+ * @LastEditTime: 2022-04-19 14:44:36
  * @Description: Modify here please
 -->
+<script>
+import { defineComponent } from 'vue';
+export default defineComponent({
+  name: 'HomePage',
+});
+</script>
 <script setup lang="ts">
-
+import { ref } from 'vue';
+const msg = ref('首页');
 </script>
 
 <template>
-  <div class="home">首页</div>
+  <div class="home">{{ msg }}</div>
 </template>
 
 <style scoped>

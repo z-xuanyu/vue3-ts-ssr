@@ -11,9 +11,8 @@ import {
   createRouter as createVueRouter,
   createMemoryHistory,
   createWebHistory,
-  Router
+  Router,
 } from 'vue-router';
-
 
 const routes = [
   {
@@ -22,9 +21,9 @@ const routes = [
     meta: {
       title: '首页',
       keepAlive: true,
-      requireAuth: true
+      requireAuth: true,
     },
-    component: () => import('@/pages/home/index.vue')
+    component: () => import('@/pages/home/index.vue'),
   },
   {
     path: '/user',
@@ -32,14 +31,14 @@ const routes = [
     meta: {
       title: '用户中心',
       keepAlive: true,
-      requireAuth: true
+      requireAuth: true,
     },
-    component: () => import('@/pages/user/index.vue')
-  }
-]
+    component: () => import('@/pages/user/index.vue'),
+  },
+];
 
-
-export const createRouter = (type: 'client' | 'server'): Router => createVueRouter({
-  history: type === 'client' ? createWebHistory() : createMemoryHistory(),
-  routes
-})
+export const createRouter = (type: 'client' | 'server'): Router =>
+  createVueRouter({
+    history: type === 'client' ? createWebHistory() : createMemoryHistory(),
+    routes,
+  });
