@@ -4,7 +4,7 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-04-19 10:26:57
- * @LastEditTime: 2022-04-19 11:35:14
+ * @LastEditTime: 2022-04-19 15:51:15
  * @Description: Modify here please
  */
 const Koa = require('koa');
@@ -40,13 +40,11 @@ const koaConnect = require('koa-connect');
       // 3. 加载服务器入口, vite.ssrLoadModule 将自动转换
       const { render } = await viteServer.ssrLoadModule('/src/entry-server.ts');
       //  4. 渲染应用的 HTML
-      const { renderedHtml, state, preloadLinks } = await render(ctx, {});
-
+      const [renderedHtml, state] = await render(ctx, {});
       // 替换标识 <!--app-html--> 为vue模板html
       let html = template
         .replace('<!--app-html-->', renderedHtml)
-        .replace('<!--pinia-state-->', state)
-        .replace('<!--preload-links-->', preloadLinks);
+        .replace('<!--pinia-state-->', state);
       ctx.type = 'text/html';
       ctx.body = html;
     } catch (error) {

@@ -7,7 +7,7 @@
  * @LastEditTime: 2022-04-19 14:44:08
  * @Description: Modify here please
 -->
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'UserPage',
@@ -16,7 +16,7 @@ export default defineComponent({
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const msg = ref('用户中心');
+const msg = ref('用户中心1111121');
 </script>
 
 <template>

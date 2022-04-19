@@ -4,10 +4,10 @@
  * @email: 969718197@qq.com
  * @github: https://github.com/z-xuanyu
  * @Date: 2022-04-19 11:03:12
- * @LastEditTime: 2022-04-19 14:44:36
+ * @LastEditTime: 2022-04-19 15:43:48
  * @Description: Modify here please
 -->
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'HomePage',
@@ -15,7 +15,7 @@ export default defineComponent({
 </script>
 <script setup lang="ts">
 import { ref } from 'vue';
-const msg = ref('首页');
+const msg = ref('首页2121');
 </script>
 
 <template>
