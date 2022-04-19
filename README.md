@@ -1,4 +1,13 @@
-<<<<<<< HEAD
+<!--
+ * @Author: xuanyu
+ * @LastEditors: xuanyu
+ * @email: 969718197@qq.com
+ * @github: https://github.com/z-xuanyu
+ * @Date: 2022-04-19 10:21:42
+ * @LastEditTime: 2022-04-19 12:01:03
+ * @Description: Modify here please
+-->
+
 # Vue 3 + TypeScript + Vite
 
 This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
@@ -18,4 +27,3 @@ You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/
 =======
 # vue3-ts-ssr
 vue3-ts-ssr
->>>>>>> f5768466b51658c97d186b948d6b0c2ffe019684
